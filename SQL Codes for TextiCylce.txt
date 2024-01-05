@@ -1,0 +1,9 @@
+DROP DATABASE IF EXISTS `texticycle`;
+
+CREATE DATABASE IF NOT EXISTS `texticycle`;
+
+CREATE TABLE IF NOT EXISTS `texticycle`.`users` (`User_ID` INT NOT NULL AUTO_INCREMENT , `Fullname` TEXT NOT NULL , `Phone_Number` TEXT NOT NULL , `Email_Address` TEXT NOT NULL , `Password` TEXT NOT NULL , `Recycling_Center` TEXT NULL , `User_Type` TEXT NOT NULL , PRIMARY KEY (`User_ID`), UNIQUE (`Email_Address`)) ENGINE = InnoDB;
+
+CREATE TABLE IF NOT EXISTS `texticycle`.`donations` (`Donation_ID` INT NOT NULL AUTO_INCREMENT , `User_ID` TEXT NOT NULL , `Recycling_Center_ID` TEXT NOT NULL , `Type` TEXT NOT NULL , `Details` TEXT NOT NULL , `Quantity` TEXT NOT NULL , `Image` TEXT NOT NULL , `Created_At` TEXT NOT NULL DEFAULT NOW() , `Updated_At` TEXT NULL , `Status` TEXT NOT NULL DEFAULT 'Pending', PRIMARY KEY (`Donation_ID`)) ENGINE = InnoDB;
+
+INSERT INTO `texticycle`.`users`(`Phone_Number`, `Fullname`, `Email_Address`, `Password`, `User_Type`) VALUES ('+254112160569','Robert Gitonga','bob_g@gmail.com',md5('150233'), 'Administrator');
